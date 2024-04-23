@@ -1,6 +1,7 @@
 import http from 'k6/http';
 import { sleep } from 'k6';
 import { Counter, Trend } from 'k6/metrics';
+import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 
 export const options = {
   vus: 5,
@@ -23,4 +24,10 @@ export default function () {
   res = http.get('https://test.k6.io/news.php');
   newsPageResponseTrend.add(res.timings.duration);
   sleep(1);
+}
+
+export function handleSummary(data) {
+  return {
+    "summary.html": htmlReport(data),
+  };
 }
