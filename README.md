@@ -7,7 +7,7 @@ Run a single test:
 ```sh
 k6 run tests\chapter_1\first-test.js
 ```
-Enable degub mode:
+Enable debug mode:
 ```sh
 k6 run --http-debug tests\chapter_3\http-get.js
 ```
